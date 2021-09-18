@@ -100,4 +100,37 @@
     ```
     * We can pick a command using `pick` keyword or squash it using `squash`
     * This will then lead to another file prompting to update the commit message
-* `AUTO SQUASHIING`
+    * We can use fixup and set up squash when doing rebase
+    * We can use fixup and squash with commit 
+     ```bash
+        git commit --fixup <commit_id>
+        git commit --squash <commit_id>
+    ```
+    * On doing this we tell git in advance that we are going to squash them.
+    * Now we can autosquash it using Rebase
+* `AUTO SQUASHING`
+```bash
+    git rebase -i -autosquash    
+```
+    * This will squash automatically based on the previous commits.
+* `Git hooks`
+    * Whenever we perform a commit, git creates an event.
+    * Hook allows too bind these events to some kind of hooks
+    * For ex: We can start unit test on commit or lint our code. We can use `husky` a JS package for this
+* To go back to the original state from the remote.
+```bash
+    git fetch origin
+    git reset --hard origin/master  
+```
+* This Overrides local code with remote code. Local code will be removed completely.
+* But we might still be left with some untracked files. In that case, we 
+```bash
+    git clean -df
+```
+* It removes those untracked files as well.
+* If we recently switched out of branch and forgot its name we can use the below command to go back to the previous branch.
+```bash
+    git checkout -
+```
+
+    
