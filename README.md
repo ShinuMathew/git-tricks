@@ -1,5 +1,7 @@
 # Git tricks
 
+## Commit tricks
+
 * To add and commit a change to a repository
 ```bash
     git commit -am "message"
@@ -19,11 +21,24 @@
     git add .
     git commit -amend "message"
 ```
-    * To keep the same commit message,
+* To keep the same commit message,
 ```bash
     git add .
     git commit -amend --no-edit
 ```
+* To undo previous n commits,
+```bash
+    git reset HEAD~1
+    git reset --soft HEAD~1  # Best practice
+```
+* To revert a commit yet have it in the history,
+```bash
+    git revert <commit_id hash> 
+```
+`A new revert commit will be added here instead of resetting it`
+
+## Push tricks
+
 `NOTE: The above only works if we haven't pushed the code to remote repository`
 * In that case, we can push with the force flag. This will override the remote commit with the state of the local code. But we might loose the commits which we dont have in the remote yet.
 ```bash
@@ -43,6 +58,9 @@
     * Open your repository which you want to work on
     * Click on "."
     * It opens a VSCode version of your repository
+
+## Stash tricks
+
 * `git stash`
     * To save the the stash with a name, 
     ```bash
@@ -113,6 +131,9 @@
     git rebase -i -autosquash    
 ```
     * This will squash automatically based on the previous commits.
+
+## Hooks trick
+
 * `Git hooks`
     * Whenever we perform a commit, git creates an event.
     * Hook allows too bind these events to some kind of hooks
@@ -132,5 +153,12 @@
 ```bash
     git checkout -
 ```
+## Add tricks
+
+* If we want to only add segments or specific lines of a file, we can use git add path command
+```bash
+    git add -p
+```
+* This command will show the changes in a specific file and we can start adding selected changes and commit them
 
 -- -
